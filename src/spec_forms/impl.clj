@@ -6,8 +6,12 @@
 
 ;; Modified from https://github.com/clojure/spec-alpha2/blob/7c708d063b6ea925fd406f87e08f508b7ed8c91d/src/main/clojure/clojure/alpha/spec/impl.clj#L51
 (defn validator-impl
-  [form message-fn]
-  (let [pred (s/resolve-fn form)]
+  [form message-form]
+  (let [pred (s/resolve-fn form)
+        message-fn (s/resolve-fn message-form)
+        message-fn (if (fn? message-fn)
+                     message-fn
+                     (constantly message-fn))]
     (reify
       Spec
       (conform* [_ x settings-key settings]
