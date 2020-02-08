@@ -1,10 +1,7 @@
 (ns spec-forms
-  (:require [clojure.alpha.spec :as s]
-            [spec-forms.impl]))
+  (:require [clojure.spec.alpha :as s]
+            [spec-tools.core :as st]))
 
 (defmacro validator
-  [& opts]
-  `(s/resolve-spec
-    '~(s/explicate
-       (ns-name *ns*)
-       `(validator ~@opts))))
+  [pred message]
+  `(st/spec ~pred {:reason ~message}))
