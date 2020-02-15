@@ -3,6 +3,20 @@ A Clojure(Script) library for creating human-readable error messages from [specs
 
 Spec-forms will be in alpha as long as Clojure spec is in alpha, and it will have breaking changes. The current version depends on [spec-tools](https://github.com/metosin/spec-tools), but when spec-alpha2 is released, this dependency will be dropped and spec-forms will create Specs directly. There will be significant changes due to the fundamental changes in spec-alpha2.
 
+## Install
+
+Add to deps.edn:
+```
+code204/spec-forms {:mvn/version "0.1.0-alpha2"}
+reforms {:mvn/version "0.4.3"}
+```
+
+Or add to project.clj:
+```
+[code204/spec-forms "0.1.0-alpha2"]
+[reforms "0.4.3"]
+```
+
 ## Usage
 ### Spec Creation
 
