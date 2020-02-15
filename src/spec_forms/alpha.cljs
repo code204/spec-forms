@@ -10,8 +10,7 @@
 
 (defn spec-problem->message [prob opts]
   (or (:reason prob)
-    (:default-failure-message opts)
-    "Failed validation"))
+    (:default-failure-message opts "Failed validation")))
 
 (defn spec-problem->reform-error [{:keys [pred reason via] :as prob}
                                   & [{:keys [message-fn
