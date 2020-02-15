@@ -98,3 +98,20 @@ An example implementation using Rum:
   (js/console.log "init")
   (mount-form))
 ```
+
+### Using with phrase
+
+It's very simple to use [phrase](https://github.com/alexanderkiel/phrase) with spec-forms. We just need to create a custom message-fn and pass it as an option to `validate!`:
+
+```clojure
+(defn spec-problem->message [{:keys [reason val via]} opts]
+  (or reason
+    (phrase.alpha/phrase-first {} (last via) val)
+    (:default-failure-message opts "Failed validation")))
+```
+
+Wherever you call `validate!`:
+```clojure
+(spec-forms.alpha/validate! data ui-state :your-spec-ns/your-spec
+  {:message-fn spec-problem->message})
+```
