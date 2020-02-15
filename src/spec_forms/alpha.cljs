@@ -14,8 +14,8 @@
 
 (defn spec-problem->reform-error [{:keys [pred reason via] :as prob}
                                   & [{:keys [message-fn
-                                             required-key-message]}
-                                     :as opts]]
+                                             required-key-message]
+                                      :as opts}]]
   (let [rest-via (vec (rest via))]
     (if (and (empty? rest-via) (contains-key-pred? pred))
       (let [[_ _ [_ _ k]] pred]
