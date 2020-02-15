@@ -74,7 +74,7 @@ The configuration map supports three options:
 
 Reforms implements form data as a map, so we will need a map definition in our spec, such as `(s/def ::login-form (s/keys :req [::login ::password]))` in the Usage example earlier. `::login-form` is the spec name which we give as the third argument of `validate!`. `data` is an atom containing the form data map. `ui-state` is an atom (initially nil) that Reforms uses to keep track of validation errors. See the [Reforms docs](https://github.com/bilus/reforms#validation) for more information.
 
-An example implementation using Rum:
+An example implementation using Rum (you'll need to add [rum-reforms](https://clojars.org/rum-reforms) as a dependency to run this):
 ```clojure
 (ns sf-test.client
   (:require [clojure.spec.alpha :as s]
