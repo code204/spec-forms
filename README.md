@@ -104,6 +104,8 @@ An example implementation using Rum:
 It's very simple to use [phrase](https://github.com/alexanderkiel/phrase) with spec-forms. We just need to create a custom message-fn and pass it as an option to `validate!`:
 
 ```clojure
+(require 'phrase.alpha `spec-forms.alpha)
+
 (defn spec-problem->message [{:keys [reason val via]} opts]
   (or reason
     (phrase.alpha/phrase-first {} (last via) val)
